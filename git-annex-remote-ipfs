@@ -111,7 +111,7 @@ while read line; do
 				RETRIEVE)
 					addrtmp=$(mktemp)
 					getaddrs "$key" "$addrtmp"
-					addr="$(urltoaddress "$(head "$addrtmp")")" || true
+					addr="$(urltoaddress "$(head -1 "$addrtmp")")" || true
 					rm -f "$addrtmp"
 					if [ -z "$addr" ]; then
 						echo TRANSFER-FAILURE RETRIEVE "$key" "no known ipfs address for this key"
